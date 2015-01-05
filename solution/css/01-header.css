@@ -8,8 +8,6 @@ body {
 }
 
 .header {
-  position: relative;
-  z-index: 1;
   background: #f00;
   color: #fff;
   border-bottom: 1px solid #ccc;
@@ -43,7 +41,6 @@ body {
 
 .header-list > li {
   float: left;
-  position: relative;
   border-left: 1px solid #ccc;
 }
 

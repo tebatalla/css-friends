@@ -11,6 +11,15 @@ li:hover .badge {
   background: #f00;
 }
 
+.header {
+  position: relative;
+  z-index: 1;
+}
+
+.header-list > li {
+  position: relative;
+}
+
 .header-notifications {
   display: none;
   position: absolute;
