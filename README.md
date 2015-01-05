@@ -28,6 +28,7 @@ Check out today's [end goal][live-12]. With some clear [specifications][specs], 
 - Clear your floats. Always add a clearfix class to the parent of floated elements.
 - When positioning something absolute, make sure what coordinate system you are working in. Most likely you will want to set the parent container to be `relative`, if it isn't already positioned.
 - Pseudo content is injected **inside** the selected element, as an inline element.
+- If your CSS rules look right, but are not showing up, pull up the **browser inspector** and see if you have conflicting previous rules with more specific selectors. Chrome will show your properties with a strike-through, to show which rules apply, and which are overridden.
 
 [specs]: ./SPECIFICATIONS.md
 [shots]: ./screenshots
@@ -133,6 +134,8 @@ Before moving on to Phase 3, add a `z-index` of `1` to the whole header bar. In 
 
 Pat yourself on the back, you've earned it! By now we've covered the core concepts of CSS. Things will just get easier and *way* more fun!
 
+Show off your dropdown to a **TA**.
+
 [ss-02-a]: ./screenshots/02-notifications-a.png
 [ss-02-b]: ./screenshots/02-notifications-b.png
 [ss-02-c]: ./screenshots/02-notifications-c.png
@@ -213,7 +216,9 @@ Divide the sidebar up into three sections: `.profile-picture`, `.profile-info`, 
 
 Have the `.profile-picture` be a link that contains an image tag with the provided `./shared/img/cat.jpg` picture. Make the link a `block` element and style it. Thanks to your earlier reset, the image will now expand to fill the full width of the link.
 
-To pull the `.profile-picture` partly out of its sidebar section, use a negative top margin. To make sure it is in front of the `.content-header` section, you will have to position it `relative`. You do not need to nudge it or give it a z-index. As they're now both `relative`, order of appearance on the page dictates the stacking order. This is in our favor, as `.profile-picture` is declared later.
+To pull the `.profile-picture` partly out of its sidebar section, use a negative `margin-top`. This is better than positioning, as it is still in the document flow, but doesn't leave a gap
+
+To make sure it is in front of the `.content-header` section, you will have to position it `relative`. You do not need to nudge it (we used `margin-top` to do that) or give it a z-index. As they're now both `relative`, order of appearance on the page dictates the stacking order. This is in our favor, as `.profile-picture` is declared later.
 
 To get the divider lines between all the `.profile-nav` list elements, but also at the top and bottom, you'll want to use a pseudo selector like `:first-child`, `:last-child`, or `:nth-child()`.
 
@@ -233,6 +238,8 @@ To get the divider lines between all the `.profile-nav` list elements, but also 
 
 Celebrate being online with a a nice ribbon! Put an `.online` element inside of the `.profile-picture` link. Position it absolute to be on top of the image. Then go bonkers styling it using fancy `transform` properties like `rotate()` and `translateX()`. Pay attention to typography and don't forget to add a tiny `box-shadow`.
 
+Ask a **TA** to high-five you for your CSS mastery and give you a review of everything so far!
+
 [ss-07-a]: ./screenshots/07-online-a.png
 [live-07]: http://appacademy.github.io/css-friends/solution/07-online.html
 
@@ -244,13 +251,14 @@ Celebrate being online with a a nice ribbon! Put an `.online` element inside of 
 
 ## Phase 8: Thumbs
 
-**Topics:** [Float][t-float], [Clearfix][t-clearfix], [Border-radius][t-border-radius], [Pseudo-content][t-pseudo-content], [Positioning][t-positioning], [Transform][t-transform]
+**Topics:** [Float][t-float], [Clearfix][t-clearfix], [Border-radius][t-border-radius], [Pseudo-content][t-pseudo-content], [Positioning][t-positioning], [Transform][t-transform],
+[Triangles][t-triangles]
 
 - [Screenshot A][ss-08-a]
 - [Screenshot B][ss-08-b]
 - [Live][live-08]
 
-A grid of friends! Use a list and float them all ! Spacing them out properly will be tricky. You will need to use `:nth-child()` psuedo-selectors to add some margin.
+A grid of friends! Use a list and float them all! Spacing them out properly will be tricky. You will need to use `:nth-child()` psuedo-selectors to add some left and right margin to the middle of every three `<li>`s.
 
 Create a `.thumb` class to style the links that contain the thumbnails. You can use the same `./shared/img/cat.jpg` picture for the image tag. We will want to reuse this `.thumb` class later.
 
@@ -258,13 +266,16 @@ Add `title` attributes containing friend names to the link tags. You should have
 
 To position an `absolute` element in the center relative to its parent, use a combination of `left: 50%` and `transform: translateX(-50%)`. The `left` percentage is relative to its parent, and will set the current element's left most pixel to half its parent width. Since this is too far to the left, we have to adjust this by subtracting half our own width. The `translateX()` value takes a percentage relative to itself, which is exactly what we need.
 
-To create a little triangle below the tooltip, we're need to inject more pseudo-content. Fortunately, we have two injection points, `:before` and `:after`. Since we used `:before`, we can will now use `:after`.
+To create a little triangle below the tooltip, we'll need to inject more pseudo-content. Fortunately, we have two injection points, `:before` and `:after`. Since we used `:before`, we will now use `:after`. Look at [this demo][t-triangles] how you can make a triangle out of borders.
 
-
+If you'd like an additional hint, check out this [tool tip][t-tooltip] demo. But give it a shot yourself first!
 
 [ss-08-a]: ./screenshots/08-thumbs-a.png
 [ss-08-b]: ./screenshots/08-thumbs-b.png
 [live-08]: http://appacademy.github.io/css-friends/solution/08-thumbs.html
+
+[t-triangles]: http://appacademy.github.io/css-demos/triangle.html
+[t-tooltip]: http://appacademy.github.io/css-demos/tooltip.html
 
 
 ## Phase 9: Forms
