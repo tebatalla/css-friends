@@ -3,6 +3,7 @@
 ## Colors
 - Black: #000
 - White: #fff
+- Dark Gray: #aaa
 - Gray: #ccc
 - Light Gray: #eee
 - Red: #f00
@@ -14,7 +15,7 @@
 ## Type
 - Font Family: Roboto
 - Font Weights: 300, 400, 700
-- Font Sizes: 36px, 24px, 16px, 14px
+- Font Sizes: 36px, 24px, 16px, 14px, 12px
 
 ## Borders
 - Thickness: 1px

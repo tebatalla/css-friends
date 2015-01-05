@@ -4,7 +4,7 @@ We're going to build a social network for App Academy! A mock-up, that is.
 
 Often when working as a front-end developer you'll be collaborating with a designer. Most likely they will provide you with a sequence of screenshots and specifications for you to convert into neatly, maintainable HTML and CSS.
 
-Check out today's [end goal][live-12]. With some clear [specifications][specs], a bunch of [screenshots][shots], and some hints broken down in 12 phases, you will make a pixel perfect replica in code in no time.
+Check out today's [end goal][live-12]. With some clear [specifications][specs], a bunch of [screenshots][shots], and some hints broken down in 12 phases, you will make a pixel perfect mock-up in code in no time.
 
 ## A Few Thoughts Before You Start...
 
@@ -19,9 +19,15 @@ Check out today's [end goal][live-12]. With some clear [specifications][specs], 
 - Double quote your attributes: `<nav class="header-nav">`.
 - Use descriptive classes. Convention is to make them all lowercase, using dashes. I like to use dashes to note nesting. I may have a parent `.header` element, with children named `.header-nav` and a `.header-list`.
 - Keep your selectors shallow. Nesting increases [specificity][specificity], which in turn increases precedence. Use this [calculator][calculator] to untangle.
-- Never use [IDs][ids-boo] as selectors
+- Prefer less specific selectors like `.header-nav` instead of `nav.header-nav`.
+- Never use [IDs][ids-boo] as selectors.
 - Finally, enjoy the beauty in the details. A designer's favorite game is Spot The Difference. So-so approximations never suffice, and they will kindly let you know.
 - You can do it!
+
+## Common Gotchas
+- Clear your floats. Always add a clearfix class to the parent of floated elements.
+- When positioning something absolute, make sure what coordinate system you are working in. Most likely you will want to set the parent container to be `relative`, if it isn't already positioned.
+- Pseudo content is injected **inside** the selected element, as an inline element.
 
 [specs]: ./SPECIFICATIONS.md
 [shots]: ./screenshots
@@ -70,15 +76,23 @@ Typography is always the best place to start. Pull up the specs. The first thing
 
 In `./css/01-header.css` set the default font weight, family and size on the `body` tag. If you set up your reset correctly, these styles will nicely trickle down to all child elements going forward.
 
-The next step is to analyze the screenshots. You want to start thinking of everything as being contained in boxes. We see an outer red box that expands to the full width, with inside it a fixed width box. On the left you see the "App Academy Friends" logo heading, and on the right a list of links. Think about how you can express these meanings using semantic tags. First write your HTML, then lay out your CSS selectors. Remember to use classes to label things appropriately.
+The next step is to analyze the screenshots. You want to start thinking of everything as being contained in boxes. We see an outer red box that expands to the full width, with inside it a fixed width box. On the left you see the "App Academy Friends" logo heading, and on the right a list of links. How would you express these meanings using semantic tags?
+
+Let's look at [this list][tags] of tags. I'd suggest using the `<header>`, `<nav>`, `<h1>`, `<ul>` and `<li>` tags to express our structure. Go ahead and write the skeleton in HTML.
+
+Now add text and links. As you'll be adding dummy links throughout this project, I recommend using a pound sign as the href: `<a href="#">`. That will prevent a page reload.
+
+Now that we have some structured markup in place, let's add some nice classes as hooks to select. Start by adding an outer `.header` class, for the full bar. Then add a `.header-nav` class for the fixed width container inside.
+
+With these classes in your HTML, jump to the `./css/01-header.css` file and make an outline of all the classes you added as selectors. Now go fill them out with actual styles. Make small changes, immediately refreshing in your browser to see the changes. Your understanding will grow by experimenting!
 
 To center a smaller block element inside a larger block element, you'll want to set its left and right margins to `auto`. Since block elements cannot sit next to each other normally, you're going to need floats. Whenever you float, you will need to clearfix. It's OK to float things inside of floated things.
 
-As you'll be adding dummy links throughout this project, I recommend using a pound sign as the href: `<a href="#">`. That will prevent a page reload.
+You'll want to float your logo `<h1>` to the left, and the `<ul>` list of links to the right. To get the individual `<li>` next to each other you'll want to float those left.
 
 It can be helpful to give elements a temporary background color, to see their appearance while debugging.
 
-As you put paddings in place, remember that usability is important. We want large click targets. Also do not forget the hover states, this is important and gratifying feedback for the user.
+As you put paddings in place, remember that usability is important. We want large click targets. Make your links `block` elements and add padding to them. Also do not forget the hover states, this is important and gratifying feedback for the user.
 
 Pixel perfect? Do not move on before calling over a **TA** to check your work!
 
@@ -240,9 +254,13 @@ A grid of friends! Use a list and float them all ! Spacing them out properly wil
 
 Create a `.thumb` class to style the links that contain the thumbnails. You can use the same `./shared/img/cat.jpg` picture for the image tag. We will want to reuse this `.thumb` class later.
 
-Add `title` attributes containing friend names to the link tags. You should have something like: `<a href="#" class="thumb" title="Jonathan">`. Then use `:before` pseudo-content to grab this title and inject it into the link. Style this, make it a `block` element and position it absolute.
+Add `title` attributes containing friend names to the link tags. You should have something like: `<a href="#" class="thumb" title="Jonathan">`. Then use `:before` pseudo-content to grab this title and inject it into the link. Style this to make it a tool tip, making it a `block` element and position it absolute.
 
 To position an `absolute` element in the center relative to its parent, use a combination of `left: 50%` and `transform: translateX(-50%)`. The `left` percentage is relative to its parent, and will set the current element's left most pixel to half its parent width. Since this is too far to the left, we have to adjust this by subtracting half our own width. The `translateX()` value takes a percentage relative to itself, which is exactly what we need.
+
+To create a little triangle below the tooltip, we're need to inject more pseudo-content. Fortunately, we have two injection points, `:before` and `:after`. Since we used `:before`, we can will now use `:after`.
+
+
 
 [ss-08-a]: ./screenshots/08-thumbs-a.png
 [ss-08-b]: ./screenshots/08-thumbs-b.png
@@ -289,12 +307,39 @@ Crush this using semantic tags and your floating skills. How about using pseudo-
 - [Screenshot B][ss-11-b]
 - [Live][live-11]
 
-Use the supplied `./shared/img/sprite.png` image, as well as the coordinates in the spec, to create a bunch of icon classes, such as `.icon-favorite` and `.icon-comment`. You can select all of the classes using the `[class*="icon-"]` pseudo-selector. Set the background image to the sprite only once, then for each individual class set only the background coordinates.
+Icons make things look so good! And lucky you, we're going to use a technique called a `sprite`. This is one image file that contains many smaller images. We combine them to dry up our CSS, but most importantly, to reduce HTTP request overload. We only have to fetch one image, instead of many. This makes things crazily snappy!
+
+Check out our [sprite][sprite]. Then look at the [specs][specs]
+
+We will create a slew of icon classes, one for each icon. We will prefix each class with `.icon-`. Let's start off with the post icons, create classes for `.icon-comment`, `.icon-reblog`, and `.icon-favorite`.
+
+Add these classes to the `<a>` tags you wrote in the previous phase.
+
+Back in your CSS, you can select all of these classes using the `[class*="icon-"]` pseudo-selector. Let's first write some general rules that apply to all icons. Set the supplied `./shared/img/sprite.png` image as the background image. You will want to set the `background-size` property to the specs' sprite size, as the sprite image is in double resolution for retina screens.
+
+Then set the display property of all icons to `inline-block`. This allows us to set a width and height. Set a `width` and `height` of `25px` as per the specs. Go look at the results. Notice the background image with the text on top of it.
+
+We want to get rid of the text, but we do not want to take it out of our HTML, as it conveys meaning. Let's use CSS to push the text out of the box! First add a `overflow: hidden` rule. See how that clips off the text at the sides?
+
+Now let's push out the text completely. Remember how padding is part of an element and shows the background image? Let's use a `padding-top` that is equal to the height, and set the `height` to `0`. This effectively pushes the text outside the box, as it does not fit in a `0` height element. Our overflow settings then proceed to clip it off. Check it out!
+
+Next up, start showing the correct part of the sprite for each class we wrote. In each individual icon class selector we will only have to set the `background-position` coordinates.
+
+Once we have these in place, also create selectors with the `:hover` state.
+
+For the small icons we're going to use the `.icon-small-` prefix. Go ahead and flesh those out.
+
+We can then select all of them with the `[class*="icon-small-"]` selector. Notice how the general rules of our earlier selector will also apply. We can override the `width` and `padding-top` for the small icons.
+
+When it comes to applying these icons to our HTML, we don't want these smaller icons hiding the text of the links, rather we want them to be an addition. For this we will repurpose the `<i>` tag, which seems suitable for an icon.
+
+Go ahead and add empty `<i>` tags with icons classes inside of links on the page. You'd end up with something like this: `<a href="#"><i class="icon-small-wall"></i> Wall</a>`.
 
 [ss-11-a]: ./screenshots/11-icons-a.png
 [ss-11-b]: ./screenshots/11-icons-b.png
 [live-11]: http://appacademy.github.io/css-friends/solution/11-icons.html
 
+[sprite]: ./shared/img/sprite.png
 [t-background-position]: https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
 
 
