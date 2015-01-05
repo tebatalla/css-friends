@@ -4,78 +4,133 @@ We're going to build a social network for App Academy!
 
 ## Phase 0: Reset
 
-[Live][live-phase00]
+- [Screenshot A][ss-00-a]
+- [Live][live-00]
 
-[live-phase00]: http://appacademy.github.io/css-friends/solution/00-reset.html
+[ss-00-a]: ./screenshots/00-reset-a.png
+[live-00]: http://appacademy.github.io/css-friends/solution/00-reset.html
+
 
 ## Phase 1: Header
 
-[Live][live-phase01]
+- [Screenshot A][ss-01-a]
+- [Screenshot B][ss-01-b]
+- [Live][live-01]
 
-[live-phase01]: http://appacademy.github.io/css-friends/solution/01-header.html
+[ss-01-a]: ./screenshots/01-header-a.png
+[ss-01-b]: ./screenshots/01-header-b.png
+[live-01]: http://appacademy.github.io/css-friends/solution/01-header.html
+
 
 ## Phase 2: Notifications
 
-[Live][live-phase02]
+- [Screenshot A][ss-02-a]
+- [Screenshot B][ss-02-b]
+- [Screenshot C][ss-02-c]
+- [Live][live-02]
 
-[live-phase02]: http://appacademy.github.io/css-friends/solution/02-notifications.html
+[ss-02-a]: ./screenshots/02-notifications-a.png
+[ss-02-b]: ./screenshots/02-notifications-b.png
+[ss-02-c]: ./screenshots/02-notifications-c.png
+[live-02]: http://appacademy.github.io/css-friends/solution/02-notifications.html
+
 
 ## Phase 3: Layout
 
-[Live][live-phase03]
+- [Screenshot A][ss-03-a]
+- [Live][live-03]
 
-[live-phase03]: http://appacademy.github.io/css-friends/solution/03-layout.html
+[ss-03-a]: ./screenshots/03-layout-a.png
+[live-03]: http://appacademy.github.io/css-friends/solution/03-layout.html
 
 ## Phase 4: Footer
 
-[Live][live-phase04]
+- [Screenshot A][ss-04-a]
+- [Screenshot B][ss-04-b]
+- [Live][live-04]
 
-[live-phase04]: http://appacademy.github.io/css-friends/solution/04-footer.html
+[ss-04-a]: ./screenshots/04-footer-a.png
+[ss-04-b]: ./screenshots/04-footer-b.png
+[live-04]: http://appacademy.github.io/css-friends/solution/04-footer.html
 
 ## Phase 5: Cats
 
-[Live][live-phase05]
+- [Screenshot A][ss-05-a]
+- [Screenshot B][ss-05-b]
+- [Live][live-05]
 
-[live-phase05]: http://appacademy.github.io/css-friends/solution/05-cats.html
+[ss-05-a]: ./screenshots/05-cats-a.png
+[ss-05-b]: ./screenshots/05-cats-b.png
+[live-05]: http://appacademy.github.io/css-friends/solution/05-cats.html
 
 ## Phase 6: Sidebar
 
-[Live][live-phase06]
+- [Screenshot A][ss-06-a]
+- [Screenshot B][ss-06-b]
+- [Live][live-06]
 
-[live-phase06]: http://appacademy.github.io/css-friends/solution/06-sidebar.html
+[ss-06-a]: ./screenshots/06-sidebar-a.png
+[ss-06-b]: ./screenshots/06-sidebar-b.png
+[live-06]: http://appacademy.github.io/css-friends/solution/06-sidebar.html
 
 ## Phase 7: Online
 
-[Live][live-phase07]
+- [Screenshot A][ss-07-a]
+- [Live][live-07]
 
-[live-phase07]: http://appacademy.github.io/css-friends/solution/07-online.html
+[ss-07-a]: ./screenshots/07-online-a.png
+[live-07]: http://appacademy.github.io/css-friends/solution/07-online.html
 
 ## Phase 8: Thumbs
 
-[Live][live-phase08]
+- [Screenshot A][ss-08-a]
+- [Screenshot B][ss-08-b]
+- [Live][live-08]
 
-[live-phase08]: http://appacademy.github.io/css-friends/solution/08-thumbs.html
+[ss-08-a]: ./screenshots/08-thumbs-a.png
+[ss-08-b]: ./screenshots/08-thumbs-b.png
+[live-08]: http://appacademy.github.io/css-friends/solution/08-thumbs.html
 
 ## Phase 9: Forms
 
-[Live][live-phase09]
+- [Screenshot A][ss-09-a]
+- [Screenshot B][ss-09-b]
+- [Screenshot C][ss-09-c]
+- [Screenshot D][ss-09-d]
+- [Live][live-09]
 
-[live-phase09]: http://appacademy.github.io/css-friends/solution/09-forms.html
+[ss-09-a]: ./screenshots/09-forms-a.png
+[ss-09-b]: ./screenshots/09-forms-b.png
+[ss-09-c]: ./screenshots/09-forms-c.png
+[ss-09-d]: ./screenshots/09-forms-d.png
+[live-09]: http://appacademy.github.io/css-friends/solution/09-forms.html
 
 ## Phase 10: Posts
 
-[Live][live-phase10]
+- [Screenshot A][ss-10-a]
+- [Live][live-10]
 
-[live-phase10]: http://appacademy.github.io/css-friends/solution/10-posts.html
+[ss-10-a]: ./screenshots/10-posts-a.png
+[live-10]: http://appacademy.github.io/css-friends/solution/10-posts.html
 
 ## Phase 11: Icons
 
-[Live][live-phase11]
+- [Screenshot A][ss-11-a]
+- [Screenshot B][ss-11-b]
+- [Live][live-11]
 
-[live-phase11]: http://appacademy.github.io/css-friends/solution/11-icons.html
+[ss-11-a]: ./screenshots/11-icons-a.png
+[ss-11-b]: ./screenshots/11-icons-b.png
+[live-11]: http://appacademy.github.io/css-friends/solution/11-icons.html
 
 ## Phase 12: Modal
 
-[Live][live-phase12]
+- [Screenshot A][ss-12-a]
+- [Screenshot B][ss-12-b]
+- [Screenshot C][ss-12-c]
+- [Live][live-12]
 
-[live-phase12]: http://appacademy.github.io/css-friends/solution/12-modal.html
+[ss-12-a]: ./screenshots/12-modal-a.png
+[ss-12-b]: ./screenshots/12-modal-b.png
+[ss-12-c]: ./screenshots/12-modal-c.png
+[live-12]: http://appacademy.github.io/css-friends/solution/12-modal.html
