@@ -83,7 +83,7 @@ Let's look at [this list][tags] of tags. I'd suggest using the `<header>`, `<nav
 
 Now add text and links. As you'll be adding dummy links throughout this project, I recommend using a pound sign as the href: `<a href="#">`. That will prevent a page reload.
 
-Now that we have some structured markup in place, let's add some nice classes as hooks to select. Start by adding an outer `.header` class, for the full bar. Then add a `.header-nav` class for the fixed width container inside.
+Now that we have some structured markup in place, let's add some nice classes as hooks to select. Start by adding an outer `.header` class, for the full bar. Then add a `.header-nav` class for the fixed width container inside. I'd also suggest using a `.header-logo` and `.header-list` class on the `<h1>` and `<ul>` elements, as this will keep our selectors nice and shallow. I'd avoid adding classes to the individual `<li>`s, as we can select them by their parent.
 
 With these classes in your HTML, jump to the `./css/01-header.css` file and make an outline of all the classes you added as selectors. Now go fill them out with actual styles. Make small changes, immediately refreshing in your browser to see the changes. Your understanding will grow by experimenting!
 
@@ -130,7 +130,7 @@ To keep the notification text on one line you may use the `white-space` property
 
 As you add borders to everything, make sure to nudge the dropdown to line up nicely with vertical lines in the navigation bar. Finally, you may have issues with a list item poking through the bottom rounded edges. Fix this using the overflow property.
 
-Before moving on to Phase 3, add a `z-index` of `1` to the whole header bar. In order to do this, you will also have to set the `position` property to `relative`. This should not change anything visually as-is, but will ensure that our header dropdown will stay on top as we move on and add more to the page.
+Before moving on to Phase 3, add a `z-index` of `1` to the whole header bar. In order to do this, you will also have to set the `position` property to `relative`, as `z-index` does not work on static, non-positioned, elements. This should not change anything visually as-is, but will ensure that our header dropdown will stay on top as we move on and add more to the page.
 
 Pat yourself on the back, you've earned it! By now we've covered the core concepts of CSS. Things will just get easier and *way* more fun!
 
@@ -157,11 +157,15 @@ Show off your dropdown to a **TA**.
 - [Screenshot A][ss-03-a]
 - [Live][live-03]
 
-Make a `.content` container, with a sidebar section and a main section in it. Give them widths and paddings and float them next to each other. As they do not have content yet, set a `min-height` property to `200px` to ensure they have some height, even when empty. Set temporary background colors on the elements to verify that they are properly next to each other and the correct size.
+Make a `.content` container, with a `.content-sidebar` section and a `.content-main` section in it. Give them widths and paddings and float them next to each other. As they do not have content yet, set a `min-height` property to `200px` to ensure they have some height, even when empty. Set temporary background colors on the elements to verify that they are properly next to each other and the correct size.
+
+Often there are many ways you can create whitespace using CSS. You have a choice of `margin` and `padding` and there are usually various elements you could pick to add these to, in order to end up with the same, correct appearance. In this case, if we look [ahead][live-10] a bit, we see that inside the `.content-sidebar` and `.content-main` there's white space all around, inside these sections. Nowhere are the edges/borders touched, save the big profile image, which is a special case. When that is the case, it makes sense to pick the most DRY solution, and add padding to these sections, rather than the child elements inside.
 
 Since there might be cases where either the sidebar or the main container could be longer, we cannot simply add a border to one of their sides to create the divider line in the middle. We want the line always to be the full height of parent `.content` container. We're going to flex our CSS muscles and combine pseudo-content with absolute positioning to accomplish this.
 
 Use `:before` pseudo-content to inject an element inside the `.content` container. Make it a `block` element and `position` it `absolute`. Give it a `width` of `1px`, set the `left` coordinate appropriately, but set the `top` and `bottom` simultaneously to `0`. This will nicely stretch out the element to the top and bottom. Don't forget the gray background color. Voila!
+
+**Hint**: Anytime we position something, we need to be mindful of what coordinate system we are working in. We like to control the coordinate system by setting a parent element to `relative`, if it is not already positioned. In our case of injected pseudo-content, what is the parent?
 
 [ss-03-a]: ./screenshots/03-layout-a.png
 [live-03]: http://appacademy.github.io/css-friends/solution/03-layout.html
@@ -177,7 +181,7 @@ Use `:before` pseudo-content to inject an element inside the `.content` containe
 - [Screenshot B][ss-04-b]
 - [Live][live-04]
 
-Add the footer to the bottom of the document. It does not need to be nested. You should be getting the hang of this by now! Floats in floats. Pay close attention to colors and typography.
+Add the footer to the bottom of the document. It does not need to be nested inside the `.content` container, but may be top level. You should be getting the hang of this by now! Floats in floats. Pay close attention to colors and typography.
 
 [ss-04-a]: ./screenshots/04-footer-a.png
 [ss-04-b]: ./screenshots/04-footer-b.png
@@ -196,12 +200,15 @@ Create a `.content-header` section and put it in top of the `.content` container
 
 Add a heading and button and position them absolute at the bottom. To keep the heading legible on a varied background, use the `text-shadow` property to increase contrast.
 
+For headings with a large `font-size` that do not wrap multiple lines, we like to decrease the `line-height` as it will add a decent chunk of additional space above and below the words, which is only needed if we have multiple lines. Let's get rid of that space by setting `line-height` to `1` on our header.
+
 [ss-05-a]: ./screenshots/05-cats-a.png
 [ss-05-b]: ./screenshots/05-cats-b.png
 [live-05]: http://appacademy.github.io/css-friends/solution/05-cats.html
 
 [t-background-size]: https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
 [t-text-shadow]: https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow
+[t-line-height]: http://css-tricks.com/almanac/properties/l/line-height/
 
 
 ## Phase 6: Sidebar
@@ -216,7 +223,7 @@ Divide the sidebar up into three sections: `.profile-picture`, `.profile-info`, 
 
 Have the `.profile-picture` be a link that contains an image tag with the provided `./shared/img/cat.jpg` picture. Make the link a `block` element and style it. Thanks to your earlier reset, the image will now expand to fill the full width of the link.
 
-To pull the `.profile-picture` partly out of its sidebar section, use a negative `margin-top`. This is better than positioning, as it is still in the document flow, but doesn't leave a gap
+To pull the `.profile-picture` partly out of its sidebar section, use a negative `margin-top`. This is better than positioning, as it is still in the document flow, and won't leave a gap, but pull everything up with it.
 
 To make sure it is in front of the `.content-header` section, you will have to position it `relative`. You do not need to nudge it (we used `margin-top` to do that) or give it a z-index. As they're now both `relative`, order of appearance on the page dictates the stacking order. This is in our favor, as `.profile-picture` is declared later.
 
@@ -258,7 +265,7 @@ Ask a **TA** to high-five you for your CSS mastery and give you a review of ever
 - [Screenshot B][ss-08-b]
 - [Live][live-08]
 
-A grid of friends! Use a list and float them all! Spacing them out properly will be tricky. You will need to use `:nth-child()` psuedo-selectors to add some left and right margin to the middle of every three `<li>`s.
+A grid of friends! Use a list and float them all! Spacing them out properly will be tricky. You will need to use `:nth-child()` pseudo-selectors to add some left and right margin to the middle of every three `<li>`s.
 
 Create a `.thumb` class to style the links that contain the thumbnails. You can use the same `./shared/img/cat.jpg` picture for the image tag. We will want to reuse this `.thumb` class later.
 
@@ -280,7 +287,7 @@ If you'd like an additional hint, check out this [tool tip][t-tooltip] demo. But
 
 ## Phase 9: Forms
 
-**Topics:** [Float][t-float], [Clearfix][t-clearfix], [Border-radius][t-border-radius], [Pseudo-selectors][t-pseudo-selectors], [Box-shadow][t-box-shadow], [Border-radius][t-border-radius]
+**Topics:** [Float][t-float], [Clearfix][t-clearfix], [Border-radius][t-border-radius], [Pseudo-selectors][t-pseudo-selectors], [Box-shadow][t-box-shadow], [Border-radius][t-border-radius], [Calc][t-calc]
 
 - [Screenshot A][ss-09-a]
 - [Screenshot B][ss-09-b]
@@ -290,21 +297,26 @@ If you'd like an additional hint, check out this [tool tip][t-tooltip] demo. But
 
 Reuse your `.thumb` class. Float the thumbnail and the form next to each other. Wrap your inputs and labels in container elements with an `.input` class. Wrap the button in a `.submit` container. Style them so you can reuse them. Pay special attention to the `:focus` and ':active' pseudo-classes.
 
+When you float a block element its width will be determined by its content, it will take up the minimal space necessary. In our case, when we float the thumbnail and the form next to each other, the form most likely will not fill out the full width of the parent container. To fix this you will want to set a manual `width` on the element. You'll have to do a little math to get this right.
+
+**Bonus**: CSS can do math too! Though not required today, you may use the `calc()` function. It can be especially nice to do math with combined units. For instance, you can easily subtract 100px off of a 100% width, by setting `width: calc(100% - 100px)`. You can do addition, subtraction, multiplication, and division. You can even use parentheses to denote order.
+
 [ss-09-a]: ./screenshots/09-forms-a.png
 [ss-09-b]: ./screenshots/09-forms-b.png
 [ss-09-c]: ./screenshots/09-forms-c.png
 [ss-09-d]: ./screenshots/09-forms-d.png
 [live-09]: http://appacademy.github.io/css-friends/solution/09-forms.html
 
+[t-calc]: https://developer.mozilla.org/en-US/docs/Web/CSS/calc
 
 ## Phase 10: Posts
 
-**Topics:** [Float][t-float], [Clearfix][t-clearfix], [Pseudo-content][t-pseudo-content]
+**Topics:** [Float][t-float], [Clearfix][t-clearfix], [Pseudo-content][t-pseudo-content], [Calc][t-calc]
 
 - [Screenshot A][ss-10-a]
 - [Live][live-10]
 
-Crush this using semantic tags and your floating skills. How about using pseudo-content to inject little dots `·` in between the list items?
+Crush this using semantic tags and your floating skills. How about using pseudo-content to inject little bullets `·` in between the list items?
 
 [ss-10-a]: ./screenshots/10-posts-a.png
 [live-10]: http://appacademy.github.io/css-friends/solution/10-posts.html
@@ -318,9 +330,9 @@ Crush this using semantic tags and your floating skills. How about using pseudo-
 - [Screenshot B][ss-11-b]
 - [Live][live-11]
 
-Icons make things look so good! And lucky you, we're going to use a technique called a `sprite`. This is one image file that contains many smaller images. We combine them to dry up our CSS, but most importantly, to reduce HTTP request overload. We only have to fetch one image, instead of many. This makes things crazily snappy!
+Icons make things look so good! And lucky you, we're going to use a technique called a *sprite*. This is one image file that contains many smaller images. We combine them to dry up our CSS, but most importantly, to reduce HTTP request overload. We only have to fetch one image, instead of many. This makes things crazily snappy!
 
-Check out our [sprite][sprite]. Then look at the [specs][specs]
+Check out our [sprite][sprite]. Then look at the [specs][specs].
 
 We will create a slew of icon classes, one for each icon. We will prefix each class with `.icon-`. Let's start off with the post icons, create classes for `.icon-comment`, `.icon-reblog`, and `.icon-favorite`.
 
@@ -365,7 +377,7 @@ Go ahead and add empty `<i>` tags with icons classes inside of links on the page
 
 Create a `.modal` container at the bottom of the page, with `<body>` as its parent. Have it contain two sections: `.modal-screen` and `.modal-form`.
 
-Give `.modal-screen` a `fixed` position. By setting `top`, `bottom`, `left`, `right` all to `0`, we will stretch it out to fill the entire screen. Add a `z-index` of `2` to have it sit in front of everything else on the page. Give it a `rgba(0,0,0,0.8)` value for its `background` property. The `0.8` alpha will make it slightly see-through.
+Give `.modal-screen` a `fixed` position. By setting `top`, `bottom`, `left`, `right` all to `0`, we will stretch it out to fill the entire screen. Add a `z-index` of `2` to have it sit in front of everything else on the page. Give it a `rgba(0, 0, 0, 0.8)` value for its `background` property. The `0.8` alpha will make it slightly see-through.
 
 Position the `.modal-form` absolute, using the centering trick from earlier. Style it reusing the `.input` and `.submit` classes you created.
 
