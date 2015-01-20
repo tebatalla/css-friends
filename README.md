@@ -128,7 +128,7 @@ If you'd like a hint at this point, check out this amazing [cat with glasses][t-
 
 To keep the notification text on one line you may use the `white-space` property.
 
-As you add borders to everything, make sure to nudge the dropdown to line up nicely with vertical lines in the navigation bar. Finally, you may have issues with a list item poking through the bottom rounded edges. Fix this using the overflow property.
+As you add borders to everything, make sure to nudge the dropdown to line up nicely with vertical lines in the navigation bar. Finally, you may have issues with a list item poking through the bottom rounded edges. Fix this using the `overflow` property.
 
 Before moving on to Phase 3, add a `z-index` of `1` to the whole header bar. In order to do this, you will also have to set the `position` property to `relative`, as `z-index` does not work on static, non-positioned, elements. This should not change anything visually as-is, but will ensure that our header dropdown will stay on top as we move on and add more to the page.
 
