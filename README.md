@@ -2,13 +2,13 @@
 
 We're going to build a social network for App Academy! A mock-up, that is.
 
-Often when working as a front-end developer you'll be collaborating with a designer. Most likely they will provide you with a sequence of screenshots and specifications for you to convert into neatly, maintainable HTML and CSS.
+Often when working as a front-end developer you'll be collaborating with a designer. Most likely they will provide you with a sequence of screenshots and specifications for you to convert into neat, maintainable HTML and CSS.
 
 Check out today's [end goal][live-12]. With some clear [specifications][specs], a bunch of [screenshots][shots], and some hints broken down in 12 phases, you will make a pixel perfect mock-up in code in no time.
 
 ## A Few Thoughts Before You Start...
 
-- Make sure to keep the [specs][specs] at your side at all time.
+- Make sure to keep the [specs][specs] at your side at all times.
 - Open the [screenshots][shots] in Apple's Preview to study them. You get a nice crosshair to select and measure elements. You can also zoom.
 - Use Chrome and the inspector tools. Make sure not to accidentally be zoomed in on your page. The screenshots and browser ratio should be 1:1.
 - You will be writing your HTML in the `friends.html` file in the skeleton folder.
