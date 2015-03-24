@@ -5,15 +5,17 @@ ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
 fieldset, label, input, textarea,
 span, article, footer, time, small {
-
+  box-sizing: inherit;
 }
 
 ul {
-
+  list-style-type: none;
 }
 
 img {
-
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 input[type="password"],
@@ -22,16 +24,19 @@ input[type="text"],
 input[type="submit"],
 textarea,
 button {
-
+  display: none;
 }
 
 button,
 input[type="submit"] {
-
+  cursor: pointer;
+  cursor: hand;
 }
 
 /* Clearfix */
 
 .group:after {
-
+  content: "";
+  clear: both;
+  display: block;
 }
