@@ -8,6 +8,8 @@ span, article, footer, time, small {
   box-sizing: inherit;
   font: inherit;
   font-weight: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 ul {

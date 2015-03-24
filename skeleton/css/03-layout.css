@@ -3,10 +3,10 @@
   width: 900px;
   margin: 0 auto;
   position: relative;
-  min-height: 240px;
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
+  background-color: white;
 }
 
 .content-sidebar {
