@@ -10,18 +10,23 @@ body {
   padding: 0px auto;
   width: 100%;
   border-bottom: 1px solid #ccc;
+  position: relative;
+  z-index: 1;
 }
 
 .header a {
-  color: #fff;
   text-decoration: none;
   margin: 0 auto;
   padding: 10px 20px;
   display: block;
+}
+
+.nav-link {
+  color: #fff;
   font-size: 16px;
 }
 
-.header a:hover {
+.nav-link:hover {
   background-color: #000;
 }
 
