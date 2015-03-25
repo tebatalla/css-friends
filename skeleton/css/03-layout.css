@@ -10,7 +10,8 @@
 }
 
 .content-sidebar {
-  width: 200px;
+  box-sizing: border-box;
+  width: 240px;
   min-height: 200px;
   float: left;
   background-color: white;
@@ -18,7 +19,8 @@
 }
 
 .content-main {
-  width: 620px;
+  box-sizing: border-box;
+  width: 660px;
   min-height: 200px;
   float: right;
   background-color: white;

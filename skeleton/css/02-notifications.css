@@ -21,7 +21,7 @@
   position: absolute;
   left: -1px;
   white-space: nowrap;
-  display: hidden;
+  display: none;
   padding: 0;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -29,11 +29,10 @@
   overflow: hidden;
 }
 
-.dropdown-item{
+.dropdown-item {
   text-decoration: none;
   margin: 0 auto;
   background-color: white;
-  display: none;
 }
 
 .dropdown-item a {
@@ -51,12 +50,7 @@
   border-right:  1px solid #ccc;
 }
 
-.dropdown:hover .dropdown-list .dropdown-item {
-  display: block;
-  font-size: 14px;
-}
-
-.dropdown:hover .dropdown-list .dropdown-item:hover {
+.dropdown-item:hover {
   background-color: #ccc;
 }
 

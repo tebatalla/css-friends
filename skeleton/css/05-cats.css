@@ -27,6 +27,9 @@
   background-color: #ccc;
 }
 
+.add-friend:focus {
+  outline-style: none;
+}
 
 .name {
   position: absolute;
